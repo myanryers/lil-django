@@ -1,1 +1,35 @@
-home
+<div>
+{% for pet in pets %}
+  <div class="petname">
+    <a href="{% url 'pet_detail' pet.id %}">
+      <h3>{{ pet.name | capfirst }}</h3>
+    </a>
+    <p>Species: {{ pet.species }}
+    {% if pet.breed %} 
+      <p>Breed: {{ pet.breed }}</p>
+    {% endif %}
+    <p class="hidden">{{ pet.description }}</p>
+  </div>
+{% endfor %}
+</div>
+{% comment %} 
+<p>My version</p>
+<div>
+  <table>
+    <tr class="table-headers">
+        <th>Name</th>
+        <th>Species</th>
+        <th>Age</th>
+        <th>Sex</th>
+    </tr>
+  {% for pet in pets %}
+    <tr>
+        <td><a href="{% url 'pet_detail' pet.id %}">{{ pet.name | capfirst }}</a></td>
+        <td>{{ pet.species | capfirst }}</td>
+        <td>{{ pet.age }}</td>
+        <td>{{ pet.sex | capfirst }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+</div> {% endcomment %}
+
