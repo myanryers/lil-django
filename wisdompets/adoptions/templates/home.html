@@ -12,24 +12,3 @@
   </div>
 {% endfor %}
 </div>
-{% comment %} 
-<p>My version</p>
-<div>
-  <table>
-    <tr class="table-headers">
-        <th>Name</th>
-        <th>Species</th>
-        <th>Age</th>
-        <th>Sex</th>
-    </tr>
-  {% for pet in pets %}
-    <tr>
-        <td><a href="{% url 'pet_detail' pet.id %}">{{ pet.name | capfirst }}</a></td>
-        <td>{{ pet.species | capfirst }}</td>
-        <td>{{ pet.age }}</td>
-        <td>{{ pet.sex | capfirst }}</td>
-    </tr>
-  {% endfor %}
-  </table>
-</div> {% endcomment %}
-
