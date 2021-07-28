@@ -1,10 +1,13 @@
+{% extends 'base.html' %}
+{% load adoptionsfilters %}
+{% block content %}
 <div>
   <h2>{{ pet.name | capfirst }}</h2>
   <p>{{ pet.species }}</p>
-  {% with "breed age sex" as attrs %}
+  {% with "breed age sex"|split as attrs %}
     {% for attr in attrs %}
-      {% if pet.__dict__[attr] %} 
-        <p>{{ attr | capfirst }}: {{ pet.__dict__[attr] }}</p>
+      {% if pet|get_attr:attr %} 
+        <p>{{ attr | capfirst }}: {{ pet | get_attr:attr }}</p>
       {% endif %}
     {% endfor %}
   {% endwith %}
@@ -20,3 +23,4 @@
   <p>Submitted on: {{ pet.submission_date | date:"M d Y" }}</p>
   <p>{{ pet.description | default:"No description available" }}</p>
 </div>
+{% endblock %}
